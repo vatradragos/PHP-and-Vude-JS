@@ -1,0 +1,92 @@
+<div class="container" id="header-container">
+
+  <div class="row" id="header-row-1">
+    <div class="col-lg-12 col-md-12 col-sm-12" id="header-col-1">
+      <div id="header-title-1">
+        {{ message }}
+      </div>
+    </div>
+  </div>
+
+  <div class="row" id="header-row-2">
+    <div class="col-lg-12 col-md-12 col-sm-12" id="header-col-2">
+      <div id="header-title-2">
+        {{ message }}
+      </div>
+    </div>
+  </div>
+
+  <div class="row" id="header-row-3">
+    <div class="col-lg-12 col-md-12 col-sm-12" id="header-col-3">
+      <div id="header-title-3">
+        {{ message }}
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<style>
+    #header-container {
+      margin-top: 10px;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    #header-row-1 {
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+
+    #header-row-2 {
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+
+    #header-row-3 {
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+
+    #header-title-1 {
+      font-family: 'Noto Serif Display', serif;
+      font-size: 2em;
+    }
+
+    #header-title-2 {
+      font-family: 'Alfa Slab One', cursive;
+      font-size: 3em;
+    }
+
+    #header-title-3 {
+      font-family: 'Noto Serif Display', serif;
+      font-size: 2em;
+    }
+</style>
+
+<script>
+  var app = new Vue({
+  el: '#header-title-1',
+  data: {
+    message: 'Wellcome to'
+  }
+})
+</script>
+
+<script>
+  var app = new Vue({
+  el: '#header-title-2',
+  data: {
+    message: 'TRANSPARENT'
+  }
+})
+</script>
+
+<script>
+  var app = new Vue({
+  el: '#header-title-3',
+  data: {
+    message: 'A Private Library'
+  }
+})
+</script>

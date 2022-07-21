@@ -1,0 +1,115 @@
+<div class="container" id="admin-container">
+
+  <div class="row" id="admin-row">
+
+    <div class="col-lg-12 col-md-12 col-sm-12" id="admin-col">
+      <div id="admin">
+        {{ message }}
+      </div>
+    </div>
+
+  </div>
+  
+  <div class="row" id="books-row">
+
+      <div class="col-lg-6 col-md-6 col-sm-12" id="books-col-1">
+        <div id="books">
+          {{ message }}
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-3 col-sm-12" id="books-col-2">
+        <button type="button" class="btn btn-success" id="addbooks" onclick='window.location="./adminBooks.php"'> VIEW</button>
+      </div>
+
+    </div>
+
+      <div class="row" id="category-row">
+
+      <div class="col-lg-6 col-md-6 col-sm-12" id="category-col-1">
+        <div id="category">
+          {{ message }}
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-3 col-sm-12" id="category-col-2">
+        <button type="button" class="btn btn-success" id="addcategory" onclick='window.location="./adminCategory.php"'> VIEW</button>
+      </div>
+  
+    </div>
+
+</div>
+  
+<style>
+    #admin-container {
+      margin-top: 10px;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    #admin-col {
+        text-align: center;
+    }
+
+    #admin {
+      color: rgb(255, 255, 255);
+      font-family: 'Alfa Slab One', cursive;
+      font-size: 4em;
+    }
+
+    .row {
+      margin-top: 10px;
+      margin-bottom: 10px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      background-color: rgb(75, 75, 85);
+      border-radius: 10px;
+    }
+
+    #books {
+      color: rgb(255, 255, 255);
+      font-family: 'Alfa Slab One', cursive;
+      font-size: 2em;
+    }
+
+    #books-col-1 {
+        text-align: left;
+    }
+
+    #category {
+      color: rgb(255, 255, 255);
+      font-family: 'Alfa Slab One', cursive;
+      font-size: 2em;
+    }
+
+    #category-col-1 {
+        text-align: left;
+    }
+</style>
+
+<script>
+  var app = new Vue({
+  el: '#admin',
+  data: {
+    message: 'ADMIN PANEL'
+  }
+})
+</script>
+  
+<script>
+  var app = new Vue({
+  el: '#books',
+  data: {
+    message: 'BOOKS'
+  }
+})
+</script>
+
+<script>
+  var app = new Vue({
+  el: '#category',
+  data: {
+    message: 'CATEGORY'
+  }
+})
+</script>

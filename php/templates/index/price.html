@@ -1,0 +1,169 @@
+<div class="container" id="price-container">
+
+  <div class="row" id="price-row-1">
+    
+    <div class="col" id="title-col">
+      <div id="price-title">
+        {{ message }}
+      </div>
+    </div>
+
+  </div>
+
+  <div class="row" id="price-row-2">
+    
+    <div class="col" id="subtitle-col">
+      <div id="price-subtitle">
+        {{ message }}
+      </div>
+    </div>
+
+  </div>
+
+  <div class="row" id="price-row-3">
+
+    <div class="col" id="price-col-1">
+      <div id="price-1">
+        {{ message }}
+      </div>
+    </div>
+
+    <div class="col" id="price-col-2">
+      <div id="price-2">
+        {{ message }}
+      </div>
+    </div>
+
+    <div class="col" id="price-col-3">
+      <div id="price-3">
+        {{ message }}
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<style>
+    #price-container {
+      margin-top: 10px;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    #title-col {
+      margin: 10px 10px 10px 10px;
+      text-align: center;
+    }
+
+    #price-title {
+      font-family: 'Noto Serif Display', serif;
+      font-size: 2em;
+    }
+
+    #subtitle-col {
+      margin: 10px 10px 10px 10px;
+      text-align: center;
+    }
+
+    #price-subtitle {
+      font-family: 'Noto Serif Display', serif;
+      font-size: 1em;
+    }
+
+    #price-col-1 {
+      margin: 10px 10px 10px 10px;
+      text-align: center;
+      font-family: 'Alfa Slab One', cursive;
+      font-size: 4em;
+      background-color: rgb(86, 44, 184);
+      border-radius: 10px;
+      box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    }
+
+    #price-col-1:hover {
+      transform: scale(1.05);
+      transition: all 0.5s;
+      color: rgb(86, 44, 184);
+      background-color: transparent;
+    }
+
+    #price-col-2 {
+      margin: 10px 10px 10px 10px;
+      text-align: center;
+      font-family: 'Alfa Slab One', cursive;
+      font-size: 4em;
+      background-color: rgb(86, 44, 184);
+      border-radius: 10px;
+      box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    }
+
+    #price-col-2:hover {
+      transform: scale(1.05);
+      transition: all 0.5s;
+      color: rgb(86, 44, 184);
+      background-color: transparent;
+    }
+
+    #price-col-3 {
+      margin: 10px 10px 10px 10px;
+      text-align: center;
+      font-family: 'Alfa Slab One', cursive;
+      font-size: 4em;
+      background-color: rgb(86, 44, 184);
+      border-radius: 10px;
+      box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    }
+
+    #price-col-3:hover {
+      transform: scale(1.05);
+      transition: all 0.5s;
+      color: rgb(86, 44, 184);
+      background-color: transparent;
+    }
+</style>
+
+<script>
+  var app = new Vue({
+  el: '#price-title',
+  data: {
+    message: 'Our Prices'
+  }
+})
+</script>
+
+<script>
+  var app = new Vue({
+  el: '#price-subtitle',
+  data: {
+    message: 'You can only borrow 5 books at once'
+  }
+})
+</script>
+
+<script>
+  var app = new Vue({
+  el: '#price-1',
+  data: {
+    message: '5 Euro for 2 Mounths'
+  }
+})
+</script>
+
+<script>
+  var app = new Vue({
+  el: '#price-2',
+  data: {
+    message: '8 Euro for 4 Mounths'
+  }
+})
+</script>
+
+<script>
+  var app = new Vue({
+  el: '#price-3',
+  data: {
+    message: '12 Euro for 6 Mounths'
+  }
+})
+</script>

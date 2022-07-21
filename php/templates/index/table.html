@@ -1,0 +1,35 @@
+<div class="container" id="table-container">
+
+  <div class="row" id="table-row">
+
+    <div class="col" id="table-col">
+      <div id="table">
+        {{ message }}
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<style>
+    #table-container {
+      margin-top: 20px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    #table {
+      font-family: 'Noto Serif Display', serif;
+      font-size: 2em;
+    }
+</style>
+
+<script>
+  var app = new Vue({
+  el: '#table',
+  data: {
+    message: 'The Status of the Borrowed Books'
+  }
+})
+</script>

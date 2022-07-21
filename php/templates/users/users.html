@@ -1,0 +1,36 @@
+<div class="container" id="users-container">
+
+  <div class="row" id="users-row">
+    
+    <div class="col" id="users-col">
+      <div id="users-title">
+        {{ message }}
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<style>
+    #users-container {
+      margin-top: 10px;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    #users-title {
+      color: rgb(80, 78, 177);
+      font-size: 1.5em;
+      font-family: 'Bebas Neue', cursive;
+    }
+</style>
+
+<script>
+  var app = new Vue({
+  el: '#users-title',
+  data: {
+    message: 'Congratulations! You have successfully logged in!'
+  }
+})
+</script>

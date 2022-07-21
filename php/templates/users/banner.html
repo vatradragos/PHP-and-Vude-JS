@@ -1,0 +1,64 @@
+<div class="container" id="banner-container">
+
+  <div class="row" id="banner-row">
+
+    <div class="col-lg-4 col-md-4 col-sm-12" id="banner-col-1">
+      <audio controls autoplay loop>
+        <source src="audio/music.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+        </audio>
+    </div>
+
+    <div class="col-lg-4 col-md-4 col-sm-12" id="banner-col-2">
+      <marquee id="banner" width="100%" direction="left" height="30%">
+        {{ message }}
+      </marquee>
+    </div>
+
+    <div class="col-lg-4 col-md-4 col-sm-12" id="banner-col-3">
+      <button type="button" class="btn btn-dark" id="day">Night Mood</button>
+      <button type="button" class="btn btn-light" id="night">Day Mood</button>
+    </div>
+
+  </div>
+
+</div>
+
+<style>
+  .container {
+    margin: 0 auto;
+    margin-top: 10px;
+    text-align: center;
+  }
+
+  audio {
+    background: transparent;
+  }
+
+  marquee {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  #day {
+    width: 300px;
+    height: auto;
+    font-family: 'Bebas Neue', cursive;
+  }
+
+  #night {
+    display: none;
+    width: 300px;
+    height: auto;
+    font-family: 'Bebas Neue', cursive;
+  }
+</style>
+
+<script>
+  var app = new Vue({
+  el: '#banner',
+  data: {
+    message: 'Our Library is for our small comunity. All books loans must be and will remain TRANSPARENT. We look forward to seeing you in our reading club. The money raised from borrowing books is used to maintain the reading club. For a good experience of our site, please turn on the sound.'
+  }
+})
+</script>

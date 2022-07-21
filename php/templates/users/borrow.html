@@ -1,0 +1,35 @@
+<div class="container" id="borrow-container">
+
+  <div class="row" id="borrow-row">
+    
+    <div class="col" id="borrow-col">
+      <div id="borrow">
+        {{ message }}
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<style>
+    #borrow-container {
+      margin-top: 10px;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    #borrow {
+      font-family: 'Noto Serif Display', serif;
+      font-size: 1em;
+    }
+</style>
+
+<script>
+  var app = new Vue({
+  el: '#borrow',
+  data: {
+    message: 'You can only borrow 5 books at once'
+  }
+})
+</script>

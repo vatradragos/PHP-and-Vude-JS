@@ -1,0 +1,339 @@
+<script>
+	function add(idbook, iduser)
+	{
+		var xmlhttp = new XMLHttpRequest();
+		
+		xmlhttp.onreadystatechange = function() {
+			if (this.readyState == 4)
+			{
+				if (this.status == 200)
+				{
+					//aici vezi tu cum ii pui un mesaj mai frumos :) eventual un div care devine vizibil sau ceva...
+					//alert-ul e tare urat
+					alert('You just borrowed the book!');	
+					
+					//fac refresh la pagina
+					window.location.href = window.location.href;
+				}
+				else
+				{
+					//la fel, mesaj mai frumos :)
+					alert('Looks like an error has occurred!');
+				}
+			}
+		}
+		
+		xmlhttp.open("GET", "addBorrow.php?idbook="+idbook+"&iduser="+iduser);
+		xmlhttp.send();
+	}
+</script>
+<div class="container" id="books-container">
+
+  <div class="row" id="title-books-row">
+
+    <div class="col" id="title-books-col">
+      <hr id="hr-1">
+      <div id="history-books">
+        {{ message }}
+      </div>
+      <hr id="hr-2">
+    </div>
+
+  </div>
+  
+  <?php
+  // Include config file
+    require_once "config.php";
+            
+  // Attempt select query execution
+    $sql = "SELECT books.id, title, author, year FROM books, bookcategories WHERE books.category = bookcategories.id AND bookcategories.category = 'history' ORDER BY books.id desc";
+    if($result = mysqli_query($link, $sql)){
+      if(mysqli_num_rows($result) > 0){
+        $contor=0;
+        echo "<div class='row books-row'>";
+        while($row = mysqli_fetch_array($result)){
+			//verific daca userul are deja cartea imprumutata, facand un select in tabela borrows, vezi mai jos
+			$deja_imprumutata = false;
+			//construiesc dinamic atributul onclick si il atasez la buton daca userul nu a imprumutat deja cartea
+			//altfel, nu scriu nimic si pun si atributul disabled pe buton
+			$onclickfunction = "onclick=add(".$row['id'].",".$_SESSION['id'].")";
+			$sql2 = "SELECT count(*) as deja_imprumutata FROM borrows WHERE idbook = ".$row['id']." AND iduser = ".$_SESSION['id'];
+			//echo $sql2;
+			if($result2 = mysqli_query($link, $sql2)){
+				if(mysqli_num_rows($result2) > 0){
+					while($row2 = mysqli_fetch_array($result2)){						
+						//daca o are deja imprumutata, atributul value de la input va fi "DEJA IMPRUMUTATA", in loc de "Add this book"
+						if ($row2['deja_imprumutata'] > 0)
+						{
+							$deja_imprumutata = true;
+							$onclickfunction = '';
+						}
+					}
+				}
+			}
+  ?>
+        <div class="col-lg-4 col-md-4 col-sm-12 books-col">
+
+          <img style='border-style:groove' src="<?php echo 'images/books/'.$row['id'].'.jpg'; ?>" class="img-fluid" alt="Responsive image">
+          <input <?php if ($deja_imprumutata == true) echo 'disabled'?> <?php echo $onclickfunction; ?> type="button" name="add_to_cart" class="btn btn-info" value="<?php if ($deja_imprumutata == true) echo 'In the basket!'; else echo 'Add this book'; ?>" />
+
+      </div>
+      
+  <?php
+    $contor++;
+  //punem cartile pe 3 coloane
+    if ($contor % 3 == 0)
+    echo "</div><div class='row books-row'>";
+      }
+    echo "</div>";
+    mysqli_free_result($result);
+      } else{
+          echo '<div class="alert alert-danger"><em>No records were found.</em></div>';
+            }
+            } else{
+                echo "Oops! Something went wrong. Please try again later.";
+            }
+
+  // Close connection
+      //unset($link);
+  ?>
+<style>
+    #books-container {
+      margin-top: 10px;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    #title-books-col {
+      margin: 10px 10px 10px 10px;
+      text-align: center;
+    }
+
+    #hr-1 {
+      border: 0;
+      height: 1px;
+      background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+    }
+
+    #hr-2 {
+      overflow: visible;
+      height: 30px;
+      border-style: solid;
+      border-color: black;
+      border-width: 1px 0 0 0;
+      border-radius: 20px;
+    }
+
+    #hr-2:before {
+      display: block;
+      content: "";
+      height: 30px;
+      margin-top: -31px;
+      border-style: solid;
+      border-color: black;
+      border-width: 0 0 1px 0;
+      border-radius: 20px;
+    }
+
+    #history-books {
+      font-family: 'Noto Serif Display', serif;
+      font-size: 2em;
+    }
+
+    .books-row {
+      margin: 10px 10px 10px 10px;
+    }
+
+    .books-col {
+      padding-left: 10px 10px 10px 10px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+
+    .btn {
+      margin: 10px 10px 10px 10px;
+      padding: 10px 10px 10px 10px;
+    }
+
+    button {
+      color: white;
+      background-color: transparent;
+      font-size: 1em;
+      font-family: 'Bebas Neue', cursive;
+      border: none;
+    }
+</style>
+
+<script>
+  var app = new Vue({
+  el: '#history-books',
+  data: {
+    message: 'History Books'
+  }
+})
+</script>
+
+<script>
+  new Vue({
+  el: '#history-button-1_1',
+  methods: {
+    say: function (message) {
+      alert(message)
+    }
+  }
+})
+</script>
+
+<script>
+  new Vue({
+  el: '#history-button-1_2',
+  methods: {
+    say: function (message) {
+      alert(message)
+    }
+  }
+})
+</script>
+
+<script>
+  new Vue({
+  el: '#history-button-1_3',
+  methods: {
+    say: function (message) {
+      alert(message)
+    }
+  }
+})
+</script>
+
+<script>
+  new Vue({
+  el: '#history-button-2_1',
+  methods: {
+    say: function (message) {
+      alert(message)
+    }
+  }
+})
+</script>
+
+<script>
+  new Vue({
+  el: '#history-button-2_2',
+  methods: {
+    say: function (message) {
+      alert(message)
+    }
+  }
+})
+</script>
+
+<script>
+  new Vue({
+  el: '#history-button-2_3',
+  methods: {
+    say: function (message) {
+      alert(message)
+    }
+  }
+})
+</script>
+
+<script>
+  new Vue({
+  el: '#history-button-3_1',
+  methods: {
+    say: function (message) {
+      alert(message)
+    }
+  }
+})
+</script>
+
+<script>
+  new Vue({
+  el: '#history-button-3_2',
+  methods: {
+    say: function (message) {
+      alert(message)
+    }
+  }
+})
+</script>
+
+<script>
+  new Vue({
+  el: '#history-button-3_3',
+  methods: {
+    say: function (message) {
+      alert(message)
+    }
+  }
+})
+</script>
+
+<script>
+  new Vue({
+  el: '#history-button-4_1',
+  methods: {
+    say: function (message) {
+      alert(message)
+    }
+  }
+})
+</script>
+
+<script>
+  new Vue({
+  el: '#history-button-4_2',
+  methods: {
+    say: function (message) {
+      alert(message)
+    }
+  }
+})
+</script>
+
+<script>
+  new Vue({
+  el: '#history-button-4_3',
+  methods: {
+    say: function (message) {
+      alert(message)
+    }
+  }
+})
+</script>
+
+<script>
+  new Vue({
+  el: '#history-button-5_1',
+  methods: {
+    say: function (message) {
+      alert(message)
+    }
+  }
+})
+</script>
+
+<script>
+  new Vue({
+  el: '#history-button-5_2',
+  methods: {
+    say: function (message) {
+      alert(message)
+    }
+  }
+})
+</script>
+
+<script>
+  new Vue({
+  el: '#history-button-5_3',
+  methods: {
+    say: function (message) {
+      alert(message)
+    }
+  }
+})
+</script>
